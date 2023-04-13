@@ -15,18 +15,21 @@ module.exports = (sequelize) => {
         unique: true,
       },
       author: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
         unique: true,
       },
       genre: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
       price: {
         type: DataTypes.DECIMAL,
       },
       stock: {
         type: DataTypes.INTEGER,
+      },
+      description: {
+        type: DataTypes.TEXT,
       },
     },
     { timestamps: false }
