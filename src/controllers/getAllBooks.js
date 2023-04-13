@@ -1,15 +1,6 @@
-const { Book } = require("../DB_connection");
+const { Book } = require("../db");
 
 const getAllBooks = async () => {
-  return await Book.findAll({
-    include: [
-      {
-        model: Book,
-      },
-    ],
-  });
+  return await Book.findAll();
 };
-
- c
-
 module.exports = getAllBooks;
