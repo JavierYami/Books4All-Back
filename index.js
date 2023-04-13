@@ -1,3 +1,4 @@
+
 const server = require("./src/app");
 const { sequelize } = require('./src/DB_connection');
 
@@ -10,9 +11,3 @@ sequelize.sync({ force: false }).then(async () => {
   });
 
 })
-
-
-
-console.log("listening on port 3001 - testing changes");
-
-
