@@ -5,7 +5,7 @@ const getBooksByQuery = require('../controllers/getBooksByQuery');
 const booksRouter = Router();
 
 
-//Obtener todos los libros
+//Obtener todos los libros 
 
 booksRouter.get('/', async (req, res) => {
     const { queryBook } = req.query;
