@@ -12,15 +12,13 @@ module.exports = (sequelize) => {
       title: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+
       },
-      author: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+      authors: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
-      genre: {
-        type: DataTypes.STRING,
+      categories: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
       price: {
         type: DataTypes.DECIMAL,
@@ -28,6 +26,12 @@ module.exports = (sequelize) => {
       stock: {
         type: DataTypes.INTEGER,
       },
+      description: {
+        type: DataTypes.TEXT
+      },
+      image: {
+        type: DataTypes.STRING
+      }
     },
     { timestamps: false }
   );
