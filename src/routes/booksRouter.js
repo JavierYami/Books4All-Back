@@ -3,8 +3,9 @@ const {Router} = require('express');
 const booksRouter = Router ();
 
 booksRouter.get('/', (req,res) => {
-    const query = req.query;
-    if(query){
+    const {queryBook} = req.query;
+    console.log(queryBook);
+    if(queryBook){
         try {
          res.send('NIY: Esta ruta trae libros por query')
         } catch (error) {
