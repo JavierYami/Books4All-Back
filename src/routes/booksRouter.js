@@ -1,18 +1,24 @@
-const {Router} = require('express');
+const { Router } = require('express');
+const getAllBooks = require('../controllers/getAllBooks');
 
-const booksRouter = Router ();
+const booksRouter = Router();
 
-booksRouter.get('/', (req,res) => {
-    const {queryBook} = req.query;
+
+//Obtener todos los libros
+
+booksRouter.get('/books', async (req, res) => {
+    const { queryBook } = req.query;
     console.log(queryBook);
-    if(queryBook){
+    if (queryBook) {
         try {
-         res.send('NIY: Esta ruta trae libros por query')
+            res.send('NIY: Esta ruta trae libros por query')
         } catch (error) {
-        res.send('NIY: Mensaje de error')
+            res.send('NIY: Mensaje de error')
         }
     }
     try {
+        const allBooks = await getAllBooks();
+        res.status(200).json(allBooks);
         res.send('NIY: Esta ruta trae todos los libros')
     } catch (error) {
         res.send('NIY: Mensaje de error')
