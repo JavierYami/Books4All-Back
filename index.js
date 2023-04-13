@@ -1,4 +1,6 @@
+
 const server = require("./src/app");
+
 
 server.listen(3001, () => {
   console.log("listening on port 3001 - testing changes");
@@ -6,9 +8,7 @@ server.listen(3001, () => {
 //hola
 
 // hola de parte de Amilkar
-
-console.log("listening on port 3001 - testing changes");
-
+// segunda prueba
 //hola
 //comentario desde Robert
 //prueba comentario: agregando modelo
