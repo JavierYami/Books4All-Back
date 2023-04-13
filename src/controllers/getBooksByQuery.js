@@ -11,7 +11,7 @@ const getBooksByQuery = async (bookTitle) =>{
         }
     })
 
-    // if(!books) throw new Error ('No matches found')
+    if(!books) throw new Error ('No matches found')
 
     return books;
 }
