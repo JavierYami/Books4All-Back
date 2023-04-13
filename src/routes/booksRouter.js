@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const getAllBooks = require('../controllers/getAllBooks');
+const getOneBook = require('../controllers/getOneBook');
 const getBooksByQuery = require('../controllers/getBooksByQuery');
 
 const booksRouter = Router();
@@ -24,12 +25,16 @@ booksRouter.get('/', async (req, res) => {
         return res.status(400).json({error:error.message})
     } 
 });
- 
-booksRouter.get('/:bookId', (req, res) => {
+
+booksRouter.get('/:bookId', async (req, res) => {
+
+    const { bookId } = req.params;
+    
     try {
-        res.send('NIY: Esta ruta trae un libro por Id')
+        const book = await getOneBook(bookId)
+        res.status(200).json(book);
     } catch (error) {
-        res.send('NIY: Mensaje de error')
+        return res.status(400).json({error:error.message})
     }
 })
 
