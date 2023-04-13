@@ -20,13 +20,14 @@ module.exports = (sequelize) => {
         max: 5,
       },
     },
-    userName: {
-      //podríamos capturar el usuario y evitarle al usuario que lo complete a mano?
+    //podríamos capturar el usuario y evitarle al usuario que lo complete a mano?
+    /*     userName: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
+    }, */
     book: {
       //en el caso en que no creemos libros nuevos desde el form podríamos omitir este atributo y que el input del libro en el formulario sea una searchBar o un menú desplegable con todos los libros
+      type: DataTypes.STRING,
       allowNull: false,
     },
   });
