@@ -1,4 +1,5 @@
-const { Router } = require('express')
+const { Router } = require('express');
+const { createReview } = require('../controllers/reviewsControllers');
 
 const reviewsRouter = Router();
 
@@ -20,13 +21,14 @@ reviewsRouter.get('/:id', async (req, res) => {
     }
 })
 reviewsRouter.post('/', async (req, res) => {
-    let { body, rating, book_id } = req.body
+    const { body, rating, book_id, user_name } = req.body;
     try {
-        let response = await createReview(body, rating, book_id)
+        let response = await createReview(body, rating, book_id, user_name)
         res.status(200).json(response);
     } catch (error) {
-        res.status(400).send('Mensaje de error')
+        res.status(400).send(error.message)
     }
 })
+
 
 module.exports = reviewsRouter;

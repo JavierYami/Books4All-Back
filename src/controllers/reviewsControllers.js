@@ -1,4 +1,4 @@
-const {Reviews, Book} = require('../DB_connection');
+const { Reviews, Book } = require('../DB_connection');
 const getAllReviews = async () => {
     /* const dbReviews = await Reviews.findAll({
         include: {
@@ -17,27 +17,28 @@ const getReviewDetail = async (id) => {
      return reviewDetail */
 }
 
-const createReview = async (body, rating, book_id) => {
-
+const createReview = async (body, rating, book_id, user_name) => {
     try {
-        const book = await Book.findByPk(bookId);
-        if(!book){
-            throw new Error('No se encontró el libro');
+
+        const book = await Book.findByPk(book_id);
+        if (!book) {
+            throw new Error("No se encontró el libro");
         }
 
+
         const newReview = await Reviews.create({
-            id,
-            body, 
-            rating
+            body,
+            rating,
+            book_id,
+            user_name
         });
-        await book.addReviews(newReview)
+
+
+        await book.addReviews(newReview);
+
+        return newReview;
     } catch (error) {
         throw new Error(error.message);
     }
-   
-    // await newReview.addBook(book_id,{
-    //     through: "book_review"
-    // }) 
-    return newReview
-}
+};
 module.exports = { createReview, getAllReviews, getReviewDetail }
