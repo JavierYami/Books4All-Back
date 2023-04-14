@@ -1,11 +1,13 @@
-const { Book } = require("../db");
 
-const getOneBook = async (id) => {
-  const book = await Book.findByPk(id, {
-    include: {
-      model: Book,
-    },
+const { Book, Reviews } = require("../DB_connection");
+
+
+const getOneBook = async (bookId) => {
+  const book = await Book.findAll({
+    where: { id: bookId },
+    include: [Reviews]
   });
+
   return book;
 };
 

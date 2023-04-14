@@ -1,14 +1,12 @@
-
 const server = require("./src/app");
+const { getBooks } = require("./src/controllers/SaveApiData");
+const { sequelize } = require("./src/DB_connection");
 
-
-server.listen(3001, () => {
-  console.log("listening on port 3001 - testing changes");
+sequelize.sync({ force: false }).then(async () => {
+  console.log('connected database, master');
+  // getBooks();
+  server.listen(3001, () => {
+  // const books =await getBooks();
+    console.log("listening on port 3001 - testing changes");
+  });
 });
-//hola
-
-// hola de parte de Amilkar
-// segunda prueba
-//hola
-//comentario desde Robert
-//prueba comentario: agregando modelo
