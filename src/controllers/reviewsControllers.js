@@ -1,21 +1,25 @@
 const { Reviews, Book } = require('../DB_connection');
 const getAllReviews = async () => {
-    /* const dbReviews = await Reviews.findAll({
+    const dbReviews = await Reviews.findAll({
         include: {
             model: Book
         }
     })
-    return dbReviews; */
+    return dbReviews;
 }
 
 const getReviewDetail = async (id) => {
-    /*  const reviewDetail = async Reviews.findByPk(id, {
-         include: {
+     const reviewDetail = await Reviews.findOne({
+        where: {
+            id: id
+        }, 
+        include: {
              model: Book
          }
      })
-     return reviewDetail */
+     return reviewDetail
 }
+
 
 const createReview = async (body, rating, book_id, user_name) => {
     try {
