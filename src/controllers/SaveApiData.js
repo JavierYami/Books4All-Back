@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Book } = require('../DB_connection')
 
-const apiKey = "AIzaSyDfSGq9pn2rOO_VgI9pMtW07f8LAv_kI28"
+const apiKey = "AIzaSyBcOaiILz4eYHp6zuCdQ9nr6npNYuJJQNY"
 
 // Esta función me permite obtener los libros de la  API de google y almacenar la información en la base de datos
 
