@@ -6,7 +6,7 @@ const { sequelize } = require("./src/DB_connection");
 sequelize.sync({ force: false }).then(async () => {
   console.log('connected database, master');
   getBooks();
-  server.listen(3001, () => {
+  server.listen(3001, async () => {
   const books =await getBooks();
     console.log("listening on port 3001 - testing changes");
   });
