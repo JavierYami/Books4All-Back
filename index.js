@@ -1,13 +1,12 @@
 const server = require("./src/app");
 const { getBooks } = require("./src/controllers/SaveApiData");
 const { sequelize } = require("./src/DB_connection");
+const port = process.env.PORT || 3001;
 
-
-sequelize.sync({ force: false }).then(async () => {
+sequelize.sync({ force: false }).then(() => {
   console.log('connected database, master');
   getBooks();
-  server.listen(3001, async () => {
-  const books =await getBooks();
-    console.log("listening on port 3001 - testing changes");
+  server.listen(port, () => {
+    console.log("listening on port " + port);
   });
 });
