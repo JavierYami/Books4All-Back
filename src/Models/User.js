@@ -12,15 +12,12 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        image: {
-            type: DataTypes.STRING
+        picture: {
+            type: DataTypes.TEXT
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        role: {
-            type: DataTypes.STRING
         }
     }, { timestamps: false })
 }

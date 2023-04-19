@@ -29,6 +29,9 @@ const {Book, Reviews, User, Role} = sequelize.models
 
 Book.hasMany(Reviews);
 Reviews.belongsTo(Book);
+
+User.hasMany(Reviews);
+Reviews.belongsTo(User);
 User.hasMany(Reviews);
 Reviews.belongsTo(User);
 User.belongsToMany(Role, {through: 'users_roles'});
