@@ -9,5 +9,5 @@ const mainRouter = Router();
 mainRouter.use('/books', booksRouter)
 mainRouter.use('/reviews', reviewsRouter)
 mainRouter.use('/users', usersRouter)
-mainRouter.use('/api/checkout', apiRouter)
+mainRouter.use('/api/stripe', apiRouter)
 module.exports = mainRouter;
