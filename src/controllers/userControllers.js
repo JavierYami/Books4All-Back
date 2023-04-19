@@ -1,4 +1,6 @@
+const { log } = require('console')
 const {User} = require('../DB_connection')
+const {Role} = require('../DB_connection')
 
 const getAllUsers = async () =>{
     const users = await User.findAll()
@@ -16,9 +18,21 @@ const getDetailUser = async (id) =>{
 }
 
 const createUser = async (name, picture, email) =>{
-    const newUser = await User.create({name, picture, email})
 
-    return "User successful"
+    if(!email) email = 'not specified'
+
+    const [user, created ] = await User.findOrCreate({
+        where: { email: email },
+        defaults: { name: name, picture: picture, email: email }
+      });
+
+    const role = await Role.findOne({
+        where:{name: 'user'}
+    })
+
+    await user.addRole(role)
+
+    return user;
 }
 
 
