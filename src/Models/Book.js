@@ -1,8 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define(
-    "Book",
+  sequelize.define('Book',
     {
       id: {
         type: DataTypes.TEXT, // "id": "GLQvEAAAQBAJ",
