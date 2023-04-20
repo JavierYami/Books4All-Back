@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('User', {
+    sequelize.define('Role', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -11,13 +11,6 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        picture: {
-            type: DataTypes.TEXT
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: true,
         }
     }, { timestamps: false })
 }

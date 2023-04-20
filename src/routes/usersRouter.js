@@ -1,36 +1,35 @@
 const {Router} = require('express');
+const { getAllUsers, getDetailUser, createUser } = require('../controllers/userControllers');
 
 const usersRouter = Router ();
 
-usersRouter.get('/', (req,res) => {
+usersRouter.get('/', async (req,res) => {
     const {queryUser} = req.query;
-    if(queryUser){
-        try {
-         res.send('NIY: Esta ruta trae usuarios por query')
-        } catch (error) {
-        res.send('NIY: Mensaje de error')
-        }
-    }
     try {
-        res.send('NIY: Esta ruta trae todos los usuarios')
+        let response = await getAllUsers()
+        res.status(200).send(response)
     } catch (error) {
-        res.send('NIY: Mensaje de error')
+        res.status(400).send({error: error.message})
     }
 });
 
-usersRouter.get('/:userId', (req, res) => {
+usersRouter.get('/:userId', async (req, res) => {
+    let {id} = req.params;
     try {
-        res.send('NIY: Esta ruta trae un usuario por Id')
+        let response = await getDetailUser(id)
+        res.status(200).send(response)
     } catch (error) {
-        res.send('NIY: Mensaje de error')
+        res.status(400).send({error: error.message})
     }
 })
 
-usersRouter.get('/reviews/all', (req, res) => {
+usersRouter.post('/', async (req, res) =>{
+    let {name, picture, email} = req.body;
     try {
-        res.send('NIY: Esta ruta trae todos las reviews del ususario')
+        let user = await createUser(name, picture, email)
+        res.status(200).send(user)
     } catch (error) {
-        res.send('NIY: Mensaje de error')
+        res.status(400).send({error: error.message})
     }
 })
 
